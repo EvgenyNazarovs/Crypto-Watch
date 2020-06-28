@@ -2,12 +2,12 @@
   <form v-on:submit.prevent>
       <input type="text"
              v-model="search"
-             placeholder="search for a specific coin"
+             placeholder="enter coin"
              v-on:keyup="searchForCoin"
              >
       <select v-on:change="onSelect" v-model="selectedCoin">
         <option disabled value="">Select a coin</option>
-        <option v-for="coin in allCoins" :value="coin">{{coin.name}}</option>
+        <option v-for="coin in filteredCoins" :value="coin">{{coin.name}}</option>
     </select>
   </form>
 
@@ -24,17 +24,13 @@ export default {
   data(){
     return {
       "search": "",
-      "selectedCoin": {}
+      "selectedCoin": {},
+      "filteredCoins": []
     }
   },
   methods: {
     searchForCoin(){
-      let foundCoin = this.allCoins.find((coin) => {
-        return coin.name.toLowerCase().indexOf(this.search.toLowerCase()) -1
-      })
-      this.selectedCoin = foundCoin
-
-      eventBus.$emit('selected-coin', this.selectedCoin)
+      filteredCoins =  allCoins.filter(coin => coin.name.includes(this.search))
     },
     onSelect(){
       this.search = ""
@@ -45,4 +41,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+form {
+  text-align: center;
+  margin: 40px 0;
+}
+
+select, input[type="text"]{
+  font-size: 18px;
+}
+
+select {
+  margin-left: 20px;
+}
 </style>
