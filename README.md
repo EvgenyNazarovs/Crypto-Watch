@@ -1,4 +1,4 @@
-<img src="https://github.com/EvgenyNazarovs/My-files/blob/master/crypto-watch-screenshots/crypto-watch-1.png" width="290">
+<img src="https://github.com/EvgenyNazarovs/My-files/blob/master/crypto-watch-screenshots/crypto-watch-1.png" width="400">
 
 # Crypto-Watch
 
